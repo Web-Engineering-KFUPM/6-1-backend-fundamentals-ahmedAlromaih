@@ -1,25 +1,32 @@
-// TODO 1: Import Express
+const express = require("express");
+
+const app = express();
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 
 
-// TODO 2: Create the Express app and store it in a variable named app
+app.get("/", (req, res) => {
+  res.send("Welcome to the home page!");
+});
 
 
 
-// TODO 3: Allow React to access the server
+app.get("/about", (req, res) => {
+  res.send("Welcome to the about page!");
+});
 
 
 
-// TODO 5: Create the home route "/"
+app.get("/student", (req, res) => {
+  res.send("Welcome to the student page!");
+});
 
 
 
-// TODO 6: Create the "/about" route
-
-
-
-// TODO 7: Create the "/student" route
-
-
-
-// TODO 4: Start the server on port 3000
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
